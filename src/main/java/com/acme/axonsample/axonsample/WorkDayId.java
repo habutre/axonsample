@@ -14,11 +14,6 @@ public class WorkDayId {
     this.day = day;
   }
 
-  public static WorkDayId of(@NonNull String workDayString) {
-    LocalDate day = LocalDate.parse(workDayString.substring(workDayString.indexOf(ID_PREFIX)));
-    return new WorkDayId(day);
-  }
-
   public static WorkDayId of(LocalDate day) {
     return new WorkDayId(day);
   }

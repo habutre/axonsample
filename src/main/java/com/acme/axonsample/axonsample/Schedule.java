@@ -49,14 +49,6 @@ public class Schedule {
     }
   }
 
-  public boolean matches(String scheduleId) {
-    return this.getId().equals(scheduleId);
-  }
-
-  public boolean mismatch(String scheduleId) {
-    return !matches(scheduleId);
-  }
-
   public boolean intersects(WorkLog workLog) {
     if (null == workLog || null == workLog.getStart()) {
       return false;
@@ -108,33 +100,8 @@ public class Schedule {
     return this;
   }
 
-  public Schedule updateDuration(ZonedDateTime start, ZonedDateTime end) {
-    this.begin = start;
-    this.end = end;
-
-    return this;
-  }
-
   public Optional<List<WorkLog>> getWorkLogs() {
     return Optional.ofNullable(this.workLogs);
-  }
-
-  public boolean isContainedIn(Set<Schedule> schedules) {
-    for (Schedule s : schedules) {
-      if (this.equals(s)) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  public Duration calculateWorkDuration(WorkLog workLog) {
-    if (this.getWorkLogs().isEmpty()) {
-      this.workLogs = new ArrayList<>();
-    }
-
-    return this.getIntersectionDuration(workLog);
   }
 
   private Schedule calculateWorkDuration() {
