@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>axonsample</artifactId>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+    <dependency>
+      <artifactId>spring-boot-starter</artifactId>
+      <groupId>org.springframework.boot</groupId>
+    </dependency>
+    <dependency>
+      <artifactId>axon-spring-boot-starter</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>axon-server-connector</artifactId>
+          <groupId>org.axonframework</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>org.axonframework</groupId>
+      <version>${axon.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>axon-mongo</artifactId>
+      <groupId>org.axonframework.extensions.mongo</groupId>
+      <version>${axon.version}</version>
+    </dependency>
+
+    <dependency>
+      <artifactId>lombok</artifactId>
+      <groupId>org.projectlombok</groupId>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+      <artifactId>spring-boot-starter-test</artifactId>
+      <exclusions>
+        <exclusion>
+          <artifactId>junit-vintage-engine</artifactId>
+          <groupId>org.junit.vintage</groupId>
+        </exclusion>
+      </exclusions>
+      <groupId>org.springframework.boot</groupId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <artifactId>axon-test</artifactId>
+      <groupId>org.axonframework</groupId>
+      <scope>test</scope>
+      <version>${axon.version}</version>
+    </dependency>
+    <dependency>
+      <artifactId>de.flapdoodle.embed.mongo</artifactId>
+      <groupId>de.flapdoodle.embed</groupId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+  <description>A sample project with issues using Set as collection</description>
+  <groupId>com.acme.axonsample</groupId>
+  <modelVersion>4.0.0</modelVersion>
+  <name>axonsample</name>
+
+  <parent>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <groupId>org.springframework.boot</groupId>
+    <relativePath/>
+    <version>2.2.4.RELEASE</version> <!-- lookup parent from repository -->
+  </parent>
+
+  <properties>
+    <axon.version>4.2</axon.version>
+    <java.version>11</java.version>
+    <maven.compiler.source>${java.version}</maven.compiler.source>
+    <maven.compiler.target>${java.version}</maven.compiler.target>
+
+  </properties>
+
+  <version>0.0.1-SNAPSHOT</version>
+
+</project>
